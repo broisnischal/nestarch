@@ -17,6 +17,7 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "typeRoots": ["node_modules/@types", "i18n.d.ts"]
+    "typeRoots": ["node_modules/@types", "i18n.d.ts"],
+    "resolveJsonModule": true
   }
 }
