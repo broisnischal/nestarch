@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { I18nValidationExceptionFilter, I18nValidationPipe } from 'nestjs-i18n';
+import { CustomZodValidationPipe } from './common/pipes';
+import { ZodValidationExceptionFilter } from './common/pipes/zod-validation.exception';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,6 +14,9 @@ async function bootstrap() {
     }),
   );
 
+  app.useGlobalPipes(new CustomZodValidationPipe());
+
+  app.useGlobalFilters(new ZodValidationExceptionFilter());
 
   await app.listen(3000);
 }

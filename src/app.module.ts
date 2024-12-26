@@ -8,10 +8,17 @@ import {
   QueryResolver,
 } from 'nestjs-i18n';
 import * as path from 'node:path';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MainModule } from './api/main/main.module';
+import { GlobalModule } from './global/global.module';
 
 @Module({
   imports: [
+    MainModule,
+    GlobalModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
